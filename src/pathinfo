@@ -1,0 +1,39 @@
+#!/bin/sh
+
+if [ $# = 2 ]; then
+  option="${1}"
+  file="${2}"
+else
+  echo 'ERROR: invalid argument format'
+  exit 1
+fi
+
+case "$option" in
+  --extension|-e)
+    basename=$(basename "$file")
+    extension=${basename##*\.}
+    [ "${extension}" != "${basename}" ] && echo "${extension}"
+    ;;
+  --name|-n)
+    basename=$(basename "$file")
+    name=$(echo "$basename" | sed 's;\..*$;;')
+    echo "${name}"
+    ;;
+  --directory|-d)
+    dirname "$file"
+    ;;
+  --directory-name|-D)
+    if [ -d "$file" ]; then
+      basename "$file"
+    else
+      dirname "$file"
+    fi
+    ;;
+  --filename|--basename|-b)
+    basename "$file"
+    ;;
+  *)
+    echo 'ERROR: unknown option'
+    exit 1
+    ;;
+esac
