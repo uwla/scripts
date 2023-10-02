@@ -1,0 +1,9 @@
+#!/bin/sh
+# rm files, not directories
+while [ -n "${1}" ]; do
+    dir=$1
+    shift
+    [ -d "${dir}" ] || break;
+    rm -rf "${dir}"
+    mkdir -p "${dir}"
+done

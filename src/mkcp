@@ -1,0 +1,9 @@
+#!/bin/sh
+while [ "$#" -gt 0 ]; do
+    f="${1}"
+    n=$(pathinfo -n "${f}")
+    ext=$(pathinfo -e "${f}")
+    cp "${f}" "${n}-copy.${ext}"
+    shift
+done
+exit 0 

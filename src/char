@@ -1,0 +1,5 @@
+#!/bin/sh
+# print the character whose index in ASCII table is equal to the first argument
+[ "${1}" -lt 256 ] || exit 1;
+printf "\\$(printf '%03o' "${1}")"
+exit 0;

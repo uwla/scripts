@@ -1,0 +1,8 @@
+#!/bin/sh
+# Run a command n times
+n="${1:-1}"
+shift
+for _ in $(seq "${n}"); do
+  sh -c "$@"
+done
+exit 0
