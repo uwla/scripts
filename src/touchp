@@ -1,0 +1,9 @@
+#!/bin/sh
+# touch files, creating directories if needed
+while [ "$#" -gt 0 ]; do
+  f="$1"
+  shift
+  dir=$(dirname "$f")
+  [ ! -d "$dir" ] && mkdir -p "$dir"
+  touch "$f"
+done

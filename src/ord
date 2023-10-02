@@ -1,0 +1,4 @@
+#!/bin/sh
+# get the index of the given char (the first argument) in the ASCII table
+export LC_CTYPE=C
+exec printf '%d' "'$1"
